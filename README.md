@@ -5,6 +5,8 @@ A zero dependency React hook that listens for a sequence of key presses to unloc
 [![NPM Version][icon-npm-version]][link-npm]
 [![NPM Total Downloads][icon-npm-total-downloads]][link-npm]
 [![License][icon-license]][link-license]
+[![Build Status][icon-build-status]][link-build]
+[![Coverage][icon-coverage]][link-coverage]
 
 ## Installation
 
@@ -42,8 +44,12 @@ d be invoked with `3` if the they successfully pressed the first 3 keys in the s
 [icon-npm-version]: https://img.shields.io/npm/v/use-kanomi-code.svg
 [icon-npm-total-downloads]: https://img.shields.io/npm/dt/use-kanomi-code.svg
 [icon-license]: https://img.shields.io/github/license/chris-feist/use-kanomi-code.svg
+[icon-build-status]: https://travis-ci.com/chris-feist/use-kanomi-code.svg?branch=main
+[icon-coverage]: https://img.shields.io/codecov/c/github/chris-feist/use-kanomi-code/main.svg
 
 [link-npm]: https://www.npmjs.com/package/use-kanomi-code
 [link-license]: ./LICENSE
+[link-build]: https://travis-ci.com/chris-feist/use-kanomi-code
+[link-coverage]: https://codecov.io/gh/chris-feist/use-kanomi-code
 [link-kanomi-code-wiki]: https://en.wikipedia.org/wiki/Konami_Code
 [link-key-events]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
