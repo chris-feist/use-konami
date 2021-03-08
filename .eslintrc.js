@@ -23,6 +23,7 @@ module.exports = {
     'comma-dangle': [2, 'always-multiline'],
     indent: [2, 2, { SwitchCase: 1 }],
     'brace-style': 1,
+    'no-trailing-spaces': 2,
 
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
