@@ -31,10 +31,31 @@ describe('index', () => {
 
     rerender({
       ...args,
-      target: undefined, 
+      target: undefined,
     });
 
     expect(args.target.removeEventListener).toHaveBeenCalled();
+  });
+
+  test('doesn\'t remove and add listener for mutable callback', () => {
+    const args = {
+      onUnlock: jest.fn(() => false),
+      target: {
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      },
+    };
+    const { rerender } = renderHook((props) => useKanomiCode(props), {
+      initialProps: args,
+    });
+
+    rerender({
+      ...args,
+      onUnlock: jest.fn(() => true),
+    });
+
+    expect(args.target.removeEventListener).not.toHaveBeenCalled();
+    expect(args.target.addEventListener).toHaveBeenCalledTimes(1);
   });
 
   test('calls onUnlock when sequence completed', () => {
@@ -141,7 +162,7 @@ describe('index', () => {
   test('calls resets index when sequence changes', () => {
     const args = {
       onUnlock: jest.fn(),
-      sequence: ['1', '2', '3'], 
+      sequence: ['1', '2', '3'],
       onReset: jest.fn(),
       onKeyPress: jest.fn(),
       target: {
@@ -159,7 +180,7 @@ describe('index', () => {
 
     rerender({
       ...args,
-      sequence: ['4', '5', '6'], 
+      sequence: ['4', '5', '6'],
     });
 
 
