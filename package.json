@@ -1,6 +1,6 @@
 {
   "name": "use-kanomi-code",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A zero dependency React hook that listens for a sequence of key presses to unlock a feature",
   "repository": "https://github.com/chris-feist/use-kanomi-code.git",
   "license": "MIT",
@@ -9,6 +9,7 @@
     "easteregg",
     "kanomi",
     "react hook",
+    "hook",
     "hooks"
   ],
   "main": "dist/index.js",
