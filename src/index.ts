@@ -62,7 +62,7 @@ const useKanomiCode = ({
   sequence: inputSequence = KANOMI_CODE,
   onReset,
   onKeyPress,
-  target = window,
+  target: inputTarget,
 }: UseKanomiCodeArgs) => {
   const index = React.useRef(0);
   const sequence = React.useRef(inputSequence);
@@ -98,6 +98,7 @@ const useKanomiCode = ({
     }
   }, [mutableCallbacks]);
 
+  const target = (inputTarget === undefined && typeof window !== 'undefined') ? window : inputTarget;
   React.useEffect(() => {
     target?.addEventListener?.('keydown', keyHandler);
     return () => {
