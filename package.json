@@ -31,7 +31,6 @@
     "lint:types": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
-    "publish": "yarn publish:npm && yarn publish:storybook",
     "publish:npm": "npm publish",
     "publish:storybook": "gh-pages -d storybook-static"
   },
