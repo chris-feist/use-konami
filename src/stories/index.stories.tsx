@@ -5,10 +5,10 @@ import { action } from '@storybook/addon-actions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import useKanomiCode, { UseKanomiCodeArgs, KANOMI_CODE } from '../index';
+import useKonami, { UseKonamiArgs, KONAMI_CODE } from '../index';
 
 export default {
-  title: 'useKanomiCode',
+  title: 'useKonami',
   argTypes: {
   },
   parameters: {
@@ -25,10 +25,10 @@ const ToastConfig = () => (
     closeButton={false} />
 );
 
-export const Basic: Story<UseKanomiCodeArgs> = (args) => {
+export const Basic: Story<UseKonamiArgs> = (args) => {
   const [lives, setLives] = React.useState(3);
 
-  useKanomiCode({
+  useKonami({
     ...args,
     onUnlock: () => {
       action('onUnlock')();
@@ -48,14 +48,14 @@ export const Basic: Story<UseKanomiCodeArgs> = (args) => {
   );
 };
 Basic.args = {
-  sequence:  KANOMI_CODE,
+  sequence:  KONAMI_CODE,
 };
 
-export const CustomTarget: Story<UseKanomiCodeArgs> = (args) => {
+export const CustomTarget: Story<UseKonamiArgs> = (args) => {
   const ref = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const [text, setText] = React.useState('');
 
-  useKanomiCode({
+  useKonami({
     ...args,
     onUnlock: () => {
       action('onUnlock')();
@@ -87,6 +87,6 @@ export const CustomTarget: Story<UseKanomiCodeArgs> = (args) => {
   );
 };
 CustomTarget.args = {
-  sequence: ['k', 'a', 'n', 'o', 'm', 'i'],
+  sequence: ['k', 'o', 'n', 'a', 'm', 'i'],
 };
 

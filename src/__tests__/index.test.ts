@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import useKanomiCode from '../';
+import useKonami from '../';
 
 describe('index', () => {
   test('adds keydown listener', () => {
@@ -12,7 +12,7 @@ describe('index', () => {
       },
     };
 
-    renderHook(() => useKanomiCode(args));
+    renderHook(() => useKonami(args));
 
     expect(args.target.addEventListener).toHaveBeenCalled();
   });
@@ -25,7 +25,7 @@ describe('index', () => {
         removeEventListener: jest.fn(),
       },
     };
-    const { rerender } = renderHook((props) => useKanomiCode(props), {
+    const { rerender } = renderHook((props) => useKonami(props), {
       initialProps: args,
     });
 
@@ -45,7 +45,7 @@ describe('index', () => {
         removeEventListener: jest.fn(),
       },
     };
-    const { rerender } = renderHook((props) => useKanomiCode(props), {
+    const { rerender } = renderHook((props) => useKonami(props), {
       initialProps: args,
     });
 
@@ -69,7 +69,7 @@ describe('index', () => {
       },
     };
 
-    renderHook(() => useKanomiCode(args));
+    renderHook(() => useKonami(args));
     const keyHandler = args.target.addEventListener.mock.calls[0][1];
 
     keyHandler({ key: 'ArrowUp' });
@@ -100,7 +100,7 @@ describe('index', () => {
       },
     };
 
-    renderHook(() => useKanomiCode(args));
+    renderHook(() => useKonami(args));
     const keyHandler = args.target.addEventListener.mock.calls[0][1];
 
     keyHandler({ key: 'ArrowUp' });
@@ -123,7 +123,7 @@ describe('index', () => {
       },
     };
 
-    renderHook(() => useKanomiCode(args));
+    renderHook(() => useKonami(args));
     const keyHandler = args.target.addEventListener.mock.calls[0][1];
 
     keyHandler({ key: 'a' });
@@ -147,7 +147,7 @@ describe('index', () => {
       },
     };
 
-    renderHook(() => useKanomiCode(args));
+    renderHook(() => useKonami(args));
     const keyHandler = args.target.addEventListener.mock.calls[0][1];
 
     keyHandler({ key: '1' });
@@ -171,7 +171,7 @@ describe('index', () => {
       },
     };
 
-    const { rerender } = renderHook((props) => useKanomiCode(props), {
+    const { rerender } = renderHook((props) => useKonami(props), {
       initialProps: args,
     });
     const keyHandler = args.target.addEventListener.mock.calls[0][1];

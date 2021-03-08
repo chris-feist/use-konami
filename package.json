@@ -1,14 +1,17 @@
 {
-  "name": "use-kanomi-code",
-  "version": "1.0.2",
+  "name": "use-konami",
+  "version": "1.0.0",
   "description": "A zero dependency React hook that listens for a sequence of key presses to unlock a feature",
-  "repository": "https://github.com/chris-feist/use-kanomi-code.git",
+  "repository": "https://github.com/chris-feist/use-konami.git",
   "license": "MIT",
   "keywords": [
     "easter egg",
     "easteregg",
-    "kanomi",
+    "konami",
     "react hook",
+    "secret",
+    "cheatcode",
+    "cheat code",
     "hook",
     "hooks"
   ],

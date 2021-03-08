@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const KANOMI_CODE = [
+export const KONAMI_CODE = [
   'ArrowUp',
   'ArrowUp',
   'ArrowDown',
@@ -23,23 +23,23 @@ interface Target {
   removeEventListener: HTMLElement['removeEventListener'],
 }
 
-export interface UseKanomiCodeArgs {
+export interface UseKonamiArgs {
   /**
    * The callback when the sequence has been completed and the secret unlocked
    */
   onUnlock: OnUnlock,
 
   /**
-   * An optional key sequence to use instead of the default Kanomi Code.
+   * An optional key sequence to use instead of the default Konami Code.
    * This should be an array of strings that correspond to key events.
    */
   sequence?: Sequence,
 
   /**
    * An optional callback when a portion of the sequence has been completed,
-   * but reset before being unlocked. It is called with the distance through
-   * the sequence that was make. For example, it would be invoked with `3`
-   * if the they successfully pressed the first 3 keys in the sequence before
+   * but reset before being unlocked. The callback is invoked with total distance
+   * through the sequence. For example, it would be invoked with `3` if the
+   * they successfully pressed the first 3 keys in the sequence before
    * pressing an incorrect key.
    */
   onReset?: OnReset,
@@ -57,13 +57,13 @@ export interface UseKanomiCodeArgs {
 
 const areArraysEqual = (arr1: string[], arr2: string[]) => arr1 === arr2 || (arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]));
 
-const useKanomiCode = ({
+const useKonami = ({
   onUnlock,
-  sequence: inputSequence = KANOMI_CODE,
+  sequence: inputSequence = KONAMI_CODE,
   onReset,
   onKeyPress,
   target: inputTarget,
-}: UseKanomiCodeArgs) => {
+}: UseKonamiArgs) => {
   const index = React.useRef(0);
   const sequence = React.useRef(inputSequence);
 
@@ -113,4 +113,4 @@ const useKanomiCode = ({
   }
 };
 
-export default useKanomiCode;
+export default useKonami;
