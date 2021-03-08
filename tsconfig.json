@@ -17,6 +17,7 @@
     "dist",
     "esm",
     "**/__tests__/**",
+    "**/stories/**",
     "jest.config.ts"
   ]
 }

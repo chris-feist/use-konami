@@ -25,7 +25,7 @@ const ToastConfig = () => (
     closeButton={false} />
 );
 
-export const Basic: Story<UseKanomiCodeArgs> = (args: UseKanomiCodeArgs) => {
+export const Basic: Story<UseKanomiCodeArgs> = (args) => {
   const [lives, setLives] = React.useState(3);
 
   useKanomiCode({
