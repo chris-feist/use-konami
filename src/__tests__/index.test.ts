@@ -41,6 +41,7 @@ describe('index', () => {
     const args = {
       onUnlock: jest.fn(),
       onReset: jest.fn(),
+      onKeyPress: jest.fn(),
       target: {
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
@@ -61,7 +62,9 @@ describe('index', () => {
     keyHandler({ key: 'b' });
     keyHandler({ key: 'a' });
 
-    expect(args.onUnlock).toHaveBeenCalled();
+    expect(args.onUnlock).toHaveBeenCalledWith({ key: 'a' });
+    expect(args.onKeyPress).toHaveBeenCalledTimes(10);
+    expect(args.onKeyPress).toHaveBeenLastCalledWith('a', 9, { key: 'a' });
     expect(args.onReset).not.toHaveBeenCalled();
   });
 
@@ -69,6 +72,7 @@ describe('index', () => {
     const args = {
       onUnlock: jest.fn(),
       onReset: jest.fn(),
+      onKeyPress: jest.fn(),
       target: {
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
@@ -82,7 +86,8 @@ describe('index', () => {
     keyHandler({ key: 'ArrowUp' });
     keyHandler({ key: 'ArrowUp' });
 
-    expect(args.onReset).toHaveBeenCalledWith(2);
+    expect(args.onReset).toHaveBeenCalledWith(2, { key: 'ArrowUp' });
+    expect(args.onKeyPress).toHaveBeenCalledTimes(2);
     expect(args.onUnlock).not.toHaveBeenCalled();
   });
 
@@ -90,6 +95,7 @@ describe('index', () => {
     const args = {
       onUnlock: jest.fn(),
       onReset: jest.fn(),
+      onKeyPress: jest.fn(),
       target: {
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
@@ -104,6 +110,7 @@ describe('index', () => {
     keyHandler({ key: 'c' });
 
     expect(args.onReset).not.toHaveBeenCalled();
+    expect(args.onKeyPress).not.toHaveBeenCalled();
     expect(args.onUnlock).not.toHaveBeenCalled();
   });
 
@@ -112,6 +119,7 @@ describe('index', () => {
       onUnlock: jest.fn(),
       sequence: ['1', '2', '3'],
       onReset: jest.fn(),
+      onKeyPress: jest.fn(),
       target: {
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
@@ -126,6 +134,7 @@ describe('index', () => {
     keyHandler({ key: '3' });
 
     expect(args.onUnlock).toHaveBeenCalled();
+    expect(args.onKeyPress).toHaveBeenCalledTimes(3);
     expect(args.onReset).not.toHaveBeenCalled();
   });
 
@@ -134,6 +143,7 @@ describe('index', () => {
       onUnlock: jest.fn(),
       sequence: ['1', '2', '3'], 
       onReset: jest.fn(),
+      onKeyPress: jest.fn(),
       target: {
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
@@ -158,6 +168,8 @@ describe('index', () => {
     keyHandler({ key: '6' });
 
     expect(args.onUnlock).toHaveBeenCalledTimes(1);
+    expect(args.onUnlock).toHaveBeenCalledWith({ key: '6' });
+    expect(args.onKeyPress).toHaveBeenCalledTimes(5);
     expect(args.onReset).not.toHaveBeenCalled();
   });
 });
