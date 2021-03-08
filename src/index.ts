@@ -1,6 +1,6 @@
 import React from 'react';
 
-const KANOMI_CODE = [
+export const KANOMI_CODE = [
   'ArrowUp',
   'ArrowUp',
   'ArrowDown',
@@ -13,9 +13,10 @@ const KANOMI_CODE = [
   'a',
 ];
 
-type OnUnlock = () => void;
+type OnUnlock = (event: KeyboardEvent) => void;
 type Sequence = string[];
-type OnReset = (distance: number) => void;
+type OnReset = (distance: number, event: KeyboardEvent) => void;
+type OnKeyPress = (key: string, index: number, event: KeyboardEvent) => void;
 
 interface Target {
   addEventListener: HTMLElement['addEventListener'],
@@ -23,9 +24,34 @@ interface Target {
 }
 
 export interface UseKanomiCodeArgs {
+  /**
+   * The callback when the sequence has been completed and the secret unlocked 
+   */
   onUnlock: OnUnlock,
+
+  /**
+   * An optional key sequence to use instead of the default Kanomi Code. 
+   * This should be an array of strings that correspond to key events.
+   */
   sequence?: Sequence,
+
+  /**
+   * An optional callback when a portion of the sequence has been completed, 
+   * but reset before being unlocked. It is called with the distance through 
+   * the sequence that was make. For example, it would be invoked with `3` 
+   * if the they successfully pressed the first 3 keys in the sequence before 
+   * pressing an incorrect key.
+   */
   onReset?: OnReset,
+
+  /**
+   * An optional callback when a key in the sequence is pressed.
+   */
+  onKeyPress?: OnKeyPress,
+
+  /**
+   * An optional target element to listen to events. The default is the window object.
+   */
   target?: Target,
 } 
 
@@ -35,27 +61,31 @@ const useKanomiCode = ({
   onUnlock,
   sequence: inputSequence = KANOMI_CODE,
   onReset,
+  onKeyPress,
   target = window,
 }: UseKanomiCodeArgs) => {
   const index = React.useRef(0);
   const sequence = React.useRef(inputSequence);
 
-  const keyHandler = React.useCallback(({ key }) => {
+  const keyHandler = React.useCallback((event) => {
+    const { key } = event;
     if (key !== sequence.current[index.current]) {
       if (index.current !== 0) {
-        onReset?.(index.current);
+        onReset?.(index.current, event);
       }
       index.current = 0;
       return;
     }
 
+    onKeyPress?.(key, index.current, event);
+
     index.current += 1;
 
     if (index.current === sequence.current.length) {
-      onUnlock();
+      onUnlock(event);
       index.current = 0;
     }
-  }, [onUnlock, onReset]);
+  }, [onUnlock, onReset, onKeyPress]);
 
   React.useEffect(() => {
     target?.addEventListener?.('keydown', keyHandler);

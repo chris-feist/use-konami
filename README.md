@@ -32,12 +32,13 @@ const Demo = () => {
 
 ### Options
 
-`onUnlock: () => void` The callback when the sequence has been completed and the secret unlocked
+`onUnlock: (event: KeyboardEvent) => void` The callback when the sequence has been completed and the secret unlocked
 
 `sequence: string[]` An optional key sequence to use instead of the default Kanomi Code. This should be an array of strings that correspond to [key events][link-key-events].
 
-`onReset: (distance: number) => void` An optional callback when a portion of the sequence has been completed, but reset before being unlocked. It is called with the distance through the sequence that was make. For example, it
-d be invoked with `3` if the they successfully pressed the first 3 keys in the sequence before pressing an incorrect key.
+`onReset: (distance: number, event: KeyboardEvent) => void` An optional callback when a portion of the sequence has been completed, but reset before being unlocked. It is called with the distance through the sequence that was make. For example, it would be invoked with `3` if the they successfully pressed the first 3 keys in the sequence before pressing an incorrect key.
+
+`onKeyPress: (key: string, index: number, event: KeyboardEvent) => void` An optional callback when a key in the sequence is pressed.
 
 `target: HTMLElement` An optional target element to listen to events. The default is the window object.
 
