@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
     "declaration": true,
     "rootDir": "src",
     "outDir": "dist",
@@ -15,6 +17,7 @@
     "dist",
     "esm",
     "**/__tests__/**",
+    "**/stories/**",
     "jest.config.ts"
   ]
 }
