@@ -19,9 +19,9 @@
     "esm/"
   ],
   "scripts": {
-    "clean": "rimraf dist esm",
+    "clean": "rimraf dist esm storybook-static",
     "prebuild": "yarn run clean",
-    "build": "yarn build:cjs && yarn build:es",
+    "build": "yarn build:cjs && yarn build:es && yarn build:storybook",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "test": "jest",
@@ -29,7 +29,6 @@
     "lint:eslint": "eslint . --ext .ts,.tsx",
     "lint:types": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
-    "prebuild:storybook": "rimraf storybook-static",
     "build:storybook": "build-storybook"
   },
   "dependencies": {},
