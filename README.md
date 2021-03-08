@@ -7,6 +7,7 @@ A zero dependency React hook that listens for a sequence of key presses to unloc
 [![License][icon-license]][link-license]
 [![Build Status][icon-build-status]][link-build]
 [![Coverage][icon-coverage]][link-coverage]
+[![Demo][icon-demo]][link-demo]
 
 ## Installation
 
@@ -30,6 +31,8 @@ const Demo = () => {
 };
 ```
 
+[**Check out the demo**][link-demo]
+
 ### Options
 
 `onUnlock: (event: KeyboardEvent) => void` The callback when the sequence has been completed and the secret unlocked
@@ -47,10 +50,12 @@ const Demo = () => {
 [icon-license]: https://img.shields.io/github/license/chris-feist/use-kanomi-code.svg
 [icon-build-status]: https://travis-ci.com/chris-feist/use-kanomi-code.svg?branch=main
 [icon-coverage]: https://img.shields.io/codecov/c/github/chris-feist/use-kanomi-code/main.svg
+[icon-demo]: https://img.shields.io/badge/demos-🎨-blue.svg
 
 [link-npm]: https://www.npmjs.com/package/use-kanomi-code
 [link-license]: ./LICENSE
 [link-build]: https://travis-ci.com/chris-feist/use-kanomi-code
 [link-coverage]: https://codecov.io/gh/chris-feist/use-kanomi-code
+[link-demo]: https://chris-feist.github.io/use-kanomi-code/
 [link-kanomi-code-wiki]: https://en.wikipedia.org/wiki/Konami_Code
 [link-key-events]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
