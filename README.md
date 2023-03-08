@@ -1,6 +1,6 @@
 # use-konami
 
-A zero dependency React hook that listens for a sequence of key presses to unlock a feature. This is usually referred to as an easter egg. The default sequence is commonly known as the [Konami Code][link-konami-code-wiki]: `↑` `↑` `↓` `↓` `←` `→` `←` `→` `a` `b`. 
+A zero dependency React hook that listens for a sequence of key presses to unlock a feature. This is usually referred to as an easter egg. The default sequence is commonly known as the [Konami Code][link-konami-code-wiki]: `↑` `↑` `↓` `↓` `←` `→` `←` `→` `b` `a`. 
 
 [![NPM Version][icon-npm-version]][link-npm]
 [![NPM Total Downloads][icon-npm-total-downloads]][link-npm]
