@@ -1,6 +1,6 @@
 {
   "name": "use-konami",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A zero dependency React hook that listens for a sequence of key presses to unlock a feature",
   "repository": "https://github.com/chris-feist/use-konami.git",
   "license": "MIT",
